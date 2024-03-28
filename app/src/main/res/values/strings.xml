@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Assignment 2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ratings">Ratings</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="descripton">Description</string>
+    <string name="phone">Phone</string>
+    <string name="location">Location</string>
+    <string name="name_icon">Name icon</string>
+    <string name="loaction_icon">Location icon</string>
+    <string name="phone_icon">Phone icon</string>
+    <string name="description_icon">Description Icon</string>
 </resources>

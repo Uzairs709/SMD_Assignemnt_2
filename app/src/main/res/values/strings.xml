@@ -11,4 +11,9 @@
     <string name="loaction_icon">Location icon</string>
     <string name="phone_icon">Phone icon</string>
     <string name="description_icon">Description Icon</string>
+    <string name="add_new_restaurant">Add New Restaurant</string>
+    <string name="add_restaurant_data">Add Restaurant Data</string>
+    <string name="resutaurant_name">Resutaurant Name</string>
+    <string name="add">Add</string>
+    <string name="exit">Exit</string>
 </resources>

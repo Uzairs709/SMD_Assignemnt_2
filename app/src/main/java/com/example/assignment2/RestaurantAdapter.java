@@ -37,6 +37,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         holder.location.setText(restaurant.getLocation());
         holder.phoneNumber.setText(restaurant.getPhoneNumber()+"");
         holder.description.setText(restaurant.getDescription());
+        holder.rating.setText(restaurant.getRating()+"");
+
     }
 
     @Override
@@ -44,9 +46,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         return restaurants.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView restaurantName,location,phoneNumber,description;
+        TextView restaurantName,location,phoneNumber,description,rating;
         ImageButton phoneBtn,messageBtn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +56,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             location=itemView.findViewById(R.id.location);
             phoneNumber=itemView.findViewById(R.id.phoneNumber);
             description=itemView.findViewById(R.id.description);
+            rating=itemView.findViewById(R.id.ratings);
 
             messageBtn=itemView.findViewById(R.id.messageBtn);
             phoneBtn=itemView.findViewById(R.id.phoneBtn);

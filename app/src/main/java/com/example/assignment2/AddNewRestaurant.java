@@ -17,7 +17,7 @@ import java.io.Serializable;
 
 public class AddNewRestaurant extends AppCompatActivity {
 
-    TextView newRestaurantName,newLocation,newPhoneNumber,newDescription;
+    TextView newRestaurantName,newLocation,newPhoneNumber,newDescription,addRating;
     Button btnAdd,btnExit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class AddNewRestaurant extends AppCompatActivity {
                 String phoneNumber=newPhoneNumber.getText().toString().trim();
                 String location=newLocation.getText().toString();
                 String description=newDescription.getText().toString();
-
+                int rating = Integer.parseInt(addRating.getText().toString());
                 if(resName.isEmpty()
                         ||phoneNumber.isEmpty()
                         ||location.isEmpty()
@@ -45,7 +45,7 @@ public class AddNewRestaurant extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
 
                 }else{
-                    RestaurantModal restaurantModal=new RestaurantModal(resName,location,phoneNumber,description);
+                    RestaurantModal restaurantModal=new RestaurantModal(resName,location,phoneNumber,description,rating);
                     Intent intent=new Intent();
                     intent.putExtra("newData", (Serializable) restaurantModal);
                     setResult(RESULT_OK,intent);
@@ -71,6 +71,7 @@ public class AddNewRestaurant extends AppCompatActivity {
         newLocation=findViewById(R.id.addNewLocation);
         newPhoneNumber=findViewById(R.id.addNewPhone);
         newDescription=findViewById(R.id.addNewDescription);
+        addRating=findViewById(R.id.addRating);
 
         btnAdd=findViewById(R.id.btnAdd);
         btnExit=findViewById(R.id.btnExit);

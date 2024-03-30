@@ -7,12 +7,13 @@ public class RestaurantModal {
     private String location;
     private String phoneNumber;
     private String description;
-
-    public RestaurantModal(String name, String location, String phoneNumber, String description) {
+    private int rating;
+    public RestaurantModal(String name, String location, String phoneNumber, String description,int rating) {
         this.name = name;
         this.location = location;
         this.phoneNumber = phoneNumber;
         this.description = description;
+        this.rating=rating;
     }
 
     public String getName() {
@@ -55,4 +56,11 @@ public class RestaurantModal {
         return Objects.equals(name, that.name) && Objects.equals(location, that.location) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(description, that.description);
     }
 
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 }

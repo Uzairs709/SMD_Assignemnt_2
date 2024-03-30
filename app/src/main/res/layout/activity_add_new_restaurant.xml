@@ -15,7 +15,7 @@
         android:text="@string/add_restaurant_data"
         android:textSize="36sp"
         android:gravity="center"
-        android:textStyle="italic"
+        android:textStyle="italic|bold"
         />
     <EditText
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:layout_margin="18dp"
         android:hint="@string/restaurant_name"
         android:id="@+id/addNewRestaurantName"
-        android:textSize="26sp"
+        android:textSize="22sp"
         android:inputType="text"
         />
     <EditText
@@ -32,7 +32,7 @@
         android:layout_margin="18dp"
         android:hint="@string/location"
         android:id="@+id/addNewLocation"
-        android:textSize="26sp"
+        android:textSize="22sp"
         android:inputType="text"
         />
     <EditText
@@ -41,7 +41,7 @@
         android:layout_margin="18dp"
         android:hint="@string/phone"
         android:id="@+id/addNewPhone"
-        android:textSize="26sp"
+        android:textSize="22sp"
         android:inputType="number"
         />
     <EditText
@@ -50,8 +50,17 @@
         android:layout_margin="18dp"
         android:hint="@string/descripton"
         android:id="@+id/addNewDescription"
-        android:textSize="26sp"
+        android:textSize="22sp"
         android:inputType="text"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:hint="@string/rating"
+        android:id="@+id/addRating"
+        android:textSize="22sp"
+        android:inputType="number"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add"
-            android:textSize="26sp"
+            android:textSize="22sp"
             android:layout_weight="5"
             tools:ignore="ButtonStyle"
             android:id="@+id/btnAdd"/>
@@ -70,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/exit"
-            android:textSize="26sp"
+            android:textSize="22sp"
             android:layout_weight="5"
             tools:ignore="ButtonStyle"
             android:id="@+id/btnExit"/>

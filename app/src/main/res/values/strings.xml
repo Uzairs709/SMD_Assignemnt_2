@@ -16,4 +16,5 @@
     <string name="resutaurant_name">Resutaurant Name</string>
     <string name="add">Add</string>
     <string name="exit">Exit</string>
+    <string name="rating">Rating</string>
 </resources>

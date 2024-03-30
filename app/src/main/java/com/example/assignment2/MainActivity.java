@@ -52,33 +52,39 @@ public class MainActivity extends AppCompatActivity {
                 "Pind",
                 "Thoker Niaz Baig",
                 "03001020450",
-                "Desi foods"));
+                "Desi foods",
+                5
+        ));
         restaurantModalArrayList.add(new RestaurantModal(
                 "Sizzling Szechuan",
                 "123 Main Street, Cityville",
                 "03001234567",
-                "Authentic Szechuan cuisine"
+                "Authentic Szechuan cuisine",
+                1
         ));
 
         restaurantModalArrayList.add(new RestaurantModal(
                 "The Burger Joint",
                 "456 Elm Avenue, Townsville",
                 "03009876543",
-                "Home of the juiciest burgers in town"
+                "Home of the juiciest burgers in town",
+                2
         ));
 
         restaurantModalArrayList.add(new RestaurantModal(
                 "Mama Mia's Pizza",
                 "789 Oak Drive, Villageton",
                 "03005432109",
-                "Handcrafted pizzas made with love"
+                "Handcrafted pizzas made with love",
+                5
         ));
 
         restaurantModalArrayList.add(new RestaurantModal(
                 "Golden Dragon Chinese Restaurant",
                 "321 Maple Lane, Hamletville",
                 "03001112233",
-                "Delicious Chinese delicacies served fresh"
+                "Delicious Chinese delicacies served fresh",
+                3
         ));
 
     }
@@ -89,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode==1&&resultCode==RESULT_OK){
             RestaurantModal restaurantModal=(RestaurantModal) Objects.requireNonNull(data).getSerializableExtra("newData");
             restaurantModalArrayList.add(restaurantModal);
-            restaurantAdapter.notifyDataSetChanged();
+            restaurantAdapter.notifyAll();
         }
     }
 }

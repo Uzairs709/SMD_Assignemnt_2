@@ -2,6 +2,7 @@ package com.example.assignment2;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
@@ -22,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rvRestaurants;
     RestaurantAdapter restaurantAdapter;
     ArrayList<RestaurantModal> restaurantModalArrayList;
+    ArrayList<RestaurantModal> filteredRestaurantList;
     Button btnAddRestaurant;
     SearchView search_bar;
+
+
+    private final ActivityResultLauncher<Intent> addNewRestaurantLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), this::handleActivityResult);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +49,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        search_bar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
+            }
+        });
 
     }
-    private ActivityResultLauncher<Intent> addNewRestaurantLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            this::handleActivityResult
-    );
+    private void filter(String text) {
+        filteredRestaurantList.clear();
+
+        if (TextUtils.isEmpty(text)) {
+            filteredRestaurantList.addAll(restaurantModalArrayList);
+        } else {
+            text = text.toLowerCase().trim();
+            for (RestaurantModal restaurant : restaurantModalArrayList) {
+                if (restaurant.getName().toLowerCase().contains(text) || restaurant.getLocation().toLowerCase().contains(text)) {
+                    filteredRestaurantList.add(restaurant);
+                }
+            }
+        }
+        restaurantAdapter.filterList(filteredRestaurantList); // Update adapter with filtered list
+    }
 
     private void handleActivityResult(ActivityResult result) {
         if (result.getResultCode() == RESULT_OK) {
@@ -65,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         search_bar=findViewById(R.id.search_bar);
 
         restaurantModalArrayList=new ArrayList<>();
-
+        filteredRestaurantList=new ArrayList<>();
         restaurantModalArrayList.add(new RestaurantModal(
                 "Pind",
                 "Thoker Niaz Baig",

@@ -88,4 +88,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         }
 
     }
+
+    public void filterList(ArrayList<RestaurantModal> filteredList) {
+        restaurants = filteredList;
+        notifyDataSetChanged();
+    }
 }

@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
     private void filter(String text) {
         filteredRestaurantList.clear();
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             Intent data = result.getData();
             RestaurantModal restaurantModal = (RestaurantModal) data.getSerializableExtra("newData");
             restaurantModalArrayList.add(restaurantModal);
+            filteredRestaurantList.add(restaurantModal);
             restaurantAdapter.notifyItemInserted(restaurantModalArrayList.size() - 1); // Assuming new item goes to the end
         }
     }

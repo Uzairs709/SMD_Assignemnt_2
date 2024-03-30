@@ -80,7 +80,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             location.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse("geo:0,0?q"+Uri.encode(location.getText().toString())));
+                    Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse("geo:0,0?q="+location.getText().toString()));
                     itemView.getContext().startActivity(intent);
 
                 }

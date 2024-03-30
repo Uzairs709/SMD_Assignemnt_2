@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,9 +40,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,AddNewRestaurant.class);
-                startActivityForResult(intent,1);
+                addNewRestaurantLauncher.launch(intent);
             }
         });
+
+
+    }
+    private ActivityResultLauncher<Intent> addNewRestaurantLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            this::handleActivityResult
+    );
+
+    private void handleActivityResult(ActivityResult result) {
+        if (result.getResultCode() == RESULT_OK) {
+            Intent data = result.getData();
+            RestaurantModal restaurantModal = (RestaurantModal) data.getSerializableExtra("newData");
+            restaurantModalArrayList.add(restaurantModal);
+            restaurantAdapter.notifyItemInserted(restaurantModalArrayList.size() - 1); // Assuming new item goes to the end
+        }
     }
     private void init(){
         rvRestaurants=findViewById(R.id.rvRestaurants);
@@ -87,15 +105,5 @@ public class MainActivity extends AppCompatActivity {
                 3
         ));
 
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1&&resultCode==RESULT_OK){
-            RestaurantModal restaurantModal=(RestaurantModal) Objects.requireNonNull(data).getSerializableExtra("newData");
-            restaurantModalArrayList.add(restaurantModal);
-            restaurantAdapter.notifyAll();
-        }
     }
 }

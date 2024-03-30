@@ -1,8 +1,9 @@
 package com.example.assignment2;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class RestaurantModal {
+public class RestaurantModal implements Serializable {
     private String name;
     private String location;
     private String phoneNumber;

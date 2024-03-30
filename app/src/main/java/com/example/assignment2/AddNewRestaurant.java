@@ -6,14 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import java.io.Serializable;
 
 public class AddNewRestaurant extends AppCompatActivity {
 
@@ -30,32 +24,33 @@ public class AddNewRestaurant extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String resName = newRestaurantName.getText().toString();
-                String phoneNumber=newPhoneNumber.getText().toString().trim();
-                String location=newLocation.getText().toString();
-                String description=newDescription.getText().toString();
-                int rating = Integer.parseInt(addRating.getText().toString());
-                if(resName.isEmpty()
-                        ||phoneNumber.isEmpty()
-                        ||location.isEmpty()
-                        ||description.isEmpty())
-                {
+                String phoneNumber = newPhoneNumber.getText().toString().trim();
+                String location = newLocation.getText().toString();
+                String description = newDescription.getText().toString();
+                String rating = addRating.getText().toString().trim();
+                if (resName.isEmpty()
+                        || phoneNumber.isEmpty()
+                        || location.isEmpty()
+                        || description.isEmpty()
+                        || rating.isEmpty()
+                ) {
                     Toast.makeText(
                             getApplicationContext(),
                             "Enter all data",
                             Toast.LENGTH_SHORT).show();
 
-                }else{
-                    RestaurantModal restaurantModal=new RestaurantModal(resName,location,phoneNumber,description,rating);
-                    Intent intent=new Intent();
-                    intent.putExtra("newData", (Serializable) restaurantModal);
-                    setResult(RESULT_OK,intent);
+                } else {
+                    int ratings = Integer.parseInt(rating);
+                    RestaurantModal restaurantModal = new RestaurantModal(resName, location,
+                            phoneNumber, description, ratings);
+                    Intent intent = new Intent();
+                    intent.putExtra("newData", restaurantModal);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             }
 
-
-        });
-
+            });
         btnExit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -65,7 +60,6 @@ public class AddNewRestaurant extends AppCompatActivity {
             }
         });
     }
-
     private void init(){
         newRestaurantName=findViewById(R.id.addNewRestaurantName);
         newLocation=findViewById(R.id.addNewLocation);
@@ -76,4 +70,7 @@ public class AddNewRestaurant extends AppCompatActivity {
         btnAdd=findViewById(R.id.btnAdd);
         btnExit=findViewById(R.id.btnExit);
     }
+
 }
+
+
